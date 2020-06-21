@@ -37,8 +37,22 @@ $ npm install @form8ion/javascript-core --save-prod
 
 ### Example
 
+#### Import
+
 ```javascript
-import javascriptCore from '@form8ion/javascript-core';
+import {scaffoldUnitTesting} from '@form8ion/javascript-core';
+```
+
+#### Scaffold Unit Testing
+
+```javascript
+(async () => {
+  await scaffoldUnitTesting({
+    projectRoot: process.cwd(),
+    visibility: 'Public',
+    vcs: {host: 'GitHub', owner: 'foo', name: 'bar'}
+  });
+})()
 ```
 
 ## Contributing
