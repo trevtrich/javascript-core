@@ -1,12 +1,12 @@
 // #### Import
 // remark-usage-ignore-next
 import stubbedFs from 'mock-fs';
-import {scaffoldUnitTesting} from './lib/index.cjs';
+import {scaffoldUnitTesting, scaffoldChoice} from './lib/index.cjs';
 
 // remark-usage-ignore-next
 stubbedFs();
 
-// #### Scaffold Unit Testing
+// #### Scaffold
 
 (async () => {
   await scaffoldUnitTesting({
@@ -14,4 +14,10 @@ stubbedFs();
     visibility: 'Public',
     vcs: {host: 'GitHub', owner: 'foo', name: 'bar'}
   });
+
+  await scaffoldChoice(
+    {foo: {scaffolder: options => options}},
+    'foo',
+    {bar: 'baz'}
+  );
 })();

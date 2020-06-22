@@ -15,6 +15,8 @@ core logic for form8ion tools related to JavaScript, like
 * [Usage](#usage)
   * [Installation](#installation)
   * [Example](#example)
+    * [Import](#import)
+    * [Scaffold](#scaffold)
 * [Contributing](#contributing)
   * [Dependencies](#dependencies)
   * [Verification](#verification)
@@ -40,10 +42,10 @@ $ npm install @form8ion/javascript-core --save-prod
 #### Import
 
 ```javascript
-import {scaffoldUnitTesting} from '@form8ion/javascript-core';
+import {scaffoldUnitTesting, scaffoldChoice} from '@form8ion/javascript-core';
 ```
 
-#### Scaffold Unit Testing
+#### Scaffold
 
 ```javascript
 (async () => {
@@ -52,7 +54,13 @@ import {scaffoldUnitTesting} from '@form8ion/javascript-core';
     visibility: 'Public',
     vcs: {host: 'GitHub', owner: 'foo', name: 'bar'}
   });
-})()
+
+  await scaffoldChoice(
+    {foo: {scaffolder: options => options}},
+    'foo',
+    {bar: 'baz'}
+  );
+})();
 ```
 
 ## Contributing
