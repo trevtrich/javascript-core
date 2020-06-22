@@ -67,6 +67,8 @@
   },
   "dependencies": {
     "@form8ion/mocha-scaffolder": "^1.0.0",
-    "deepmerge": "^4.2.2"
+    "@form8ion/overridable-prompts": "^1.0.1",
+    "deepmerge": "^4.2.2",
+    "inquirer": "^7.2.0"
   }
 }
