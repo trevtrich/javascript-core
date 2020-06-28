@@ -17,6 +17,19 @@ core logic for form8ion tools related to JavaScript, like
   * [Example](#example)
     * [Import](#import)
     * [Scaffold](#scaffold)
+  * [API](#api)
+    * [`scaffoldChoice`](#scaffoldchoice)
+      * [`choices` __object__ (_required_)](#choices-object-required)
+      * [`choice` __string__ (_required_)](#choice-string-required)
+      * [`options` __object__ (_optional_)](#options-object-optional)
+    * [`scaffoldUnitTesting`](#scaffoldunittesting)
+      * [`projectRoot` __string__ (_required_)](#projectroot-string-required)
+      * [`frameworks` __object__ (_required_)](#frameworks-object-required)
+      * [`decisions` __object__ (_optional_)](#decisions-object-optional)
+      * [`visibility` __string__ (_required_)](#visibility-string-required)
+      * [`vcs` __object__ (_required_)](#vcs-object-required)
+    * [`unitTestFrameworksSchema`](#unittestframeworksschema)
+    * [`questionNames`](#questionnames)
 * [Contributing](#contributing)
   * [Dependencies](#dependencies)
   * [Verification](#verification)
@@ -62,6 +75,75 @@ import {scaffoldUnitTesting, scaffoldChoice} from '@form8ion/javascript-core';
   );
 })();
 ```
+
+### API
+
+#### `scaffoldChoice`
+
+A generic function that executes the `scaffolder` function from a provided map
+of options based on the chosen option name.
+
+Takes three unnamed arguments:
+
+##### `choices` __object__ (_required_)
+
+* keys: __string__ Name of the choice
+* values: __object__
+  * `scaffolder`: __function__ (_required_) scaffolds the choice options
+
+##### `choice` __string__ (_required_)
+
+Name of the choice. SHOULD match a key from the [`choices` object](#choices-object-required).
+
+##### `options` __object__ (_optional_)
+
+options object to be passed as the only argument to the chosen scaffolder
+
+#### `scaffoldUnitTesting`
+
+Scaffolder for enabling unit-testing in a project with the ability to choose a
+desired framework from provided options.
+
+Takes a single options object as an argument, containing:
+
+##### `projectRoot` __string__ (_required_)
+
+path to the root of the project
+
+##### `frameworks` __object__ (_required_)
+
+A [`choices` object](#choices-object-required) for defining unit-testing
+framework options
+
+##### `decisions` __object__ (_optional_)
+
+Answers for prompt questions so that the prompt is skipped at execution time
+
+* keys: __string__ Name of the prompt question
+* values: Hard-coded answer for the prompt question
+
+##### `visibility` __string__ (_required_)
+
+visibility of the project (`Public` or `Private`)
+
+##### `vcs` __object__ (_required_)
+
+* `host` __string__ (_required_)
+  VCS hosting service
+* `owner` __string__ (_required_)
+  account name on the host service for the repository
+* `name` __string__ (_required_)
+  repository name
+
+#### `unitTestFrameworksSchema`
+
+[joi](https://hapi.dev/module/joi/) schema for the choices required for the
+[unit-testing scaffolder](#scaffoldunittesting)
+
+#### `questionNames`
+
+Constants defining the question names for the prompts implemented in this
+package
 
 ## Contributing
 
