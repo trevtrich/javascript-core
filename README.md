@@ -112,8 +112,8 @@ path to the root of the project
 
 ##### `frameworks` __object__ (_required_)
 
-A [`choices` object](#choices-object-required) for defining unit-testing
-framework options
+A [`choices` object](#choices-object-required) for defining
+[unit-testing framework options](https://github.com/form8ion/awesome#unit-testing-frameworks)
 
 ##### `decisions` __object__ (_optional_)
 
