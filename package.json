@@ -10,6 +10,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "engines": {
+    "node": ">=12"
+  },
   "runkitExampleFilename": "./example.js",
   "main": "lib/index.cjs.js",
   "module": "lib/index.es.js",

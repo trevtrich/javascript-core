@@ -40,6 +40,7 @@ core logic for form8ion tools related to JavaScript, like
 
 [![MIT license][license-badge]][license-link]
 [![npm][npm-badge]][npm-link]
+![node][node-badge]
 [![Try @form8ion/javascript-core on RunKit][runkit-badge]][runkit-link]
 
 <!--consumer-badges end -->
@@ -173,6 +174,8 @@ $ npm test
 [PRs-link]: http://makeapullrequest.com
 
 [PRs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
+
+[node-badge]: https://img.shields.io/node/v/@travi/javascript-scaffolder.svg
 
 [commit-convention-link]: https://conventionalcommits.org
 
