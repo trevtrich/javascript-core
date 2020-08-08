@@ -1,0 +1,8 @@
+_extends: .github
+repository:
+  name: javascript-core
+  description: >-
+    core logic for form8ion tools related to JavaScript, like
+    javascript-scaffolder and lift-javascript
+  homepage: 'https://npm.im/@form8ion/javascript-core'
+  private: false
