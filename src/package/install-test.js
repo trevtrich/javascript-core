@@ -1,8 +1,8 @@
-import {DEV_DEPENDENCY_TYPE} from '@form8ion/javascript-core';
 import {assert} from 'chai';
 import sinon from 'sinon';
 import any from '@travi/any';
-import * as execa from '../../third-party-wrappers/execa';
+import * as execa from '../../thirdparty-wrappers/execa';
+import {DEV_DEPENDENCY_TYPE} from '../dependencies/types';
 import npmInstall from './install';
 
 suite('npm install', () => {
