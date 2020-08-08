@@ -2,7 +2,7 @@ import {assert} from 'chai';
 import sinon from 'sinon';
 import any from '@travi/any';
 import * as execa from '../../thirdparty-wrappers/execa';
-import {DEV_DEPENDENCY_TYPE} from '../dependencies/types';
+import {DEV_DEPENDENCY_TYPE} from './types';
 import npmInstall from './install';
 
 suite('npm install', () => {
