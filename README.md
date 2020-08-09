@@ -16,7 +16,7 @@ core logic for form8ion tools related to JavaScript, like
   * [Installation](#installation)
   * [Example](#example)
     * [Import](#import)
-    * [Scaffold](#scaffold)
+    * [Execute](#execute)
   * [API](#api)
     * [`scaffoldChoice`](#scaffoldchoice)
       * [`choices` __object__ (_required_)](#choices-object-required)
@@ -29,6 +29,10 @@ core logic for form8ion tools related to JavaScript, like
       * [`visibility` __string__ (_required_)](#visibility-string-required)
       * [`vcs` __object__ (_required_)](#vcs-object-required)
     * [`unitTestFrameworksSchema`](#unittestframeworksschema)
+    * [`installDependencies`](#installdependencies)
+      * [`dependencies` __list of strings__ (_required_)](#dependencies-list-of-strings-required)
+      * [`dependenciesType` __string__ (_required_)](#dependenciestype-string-required)
+        * [Dependency-types Constants](#dependency-types-constants)
     * [`questionNames`](#questionnames)
 * [Contributing](#contributing)
   * [Dependencies](#dependencies)
@@ -56,15 +60,19 @@ $ npm install @form8ion/javascript-core --save-prod
 #### Import
 
 ```javascript
-import {scaffoldUnitTesting, scaffoldChoice} from '@form8ion/javascript-core';
+import {scaffoldUnitTesting, scaffoldChoice, installDependencies, PROD_DEPENDENCY_TYPE} from '@form8ion/javascript-core';
 ```
 
-#### Scaffold
+#### Execute
 
 ```javascript
 (async () => {
   await scaffoldUnitTesting({
     projectRoot: process.cwd(),
+    frameworks: {
+      Mocha: {scaffolder: () => undefined},
+      Jest: {scaffolder: () => undefined}
+    },
     visibility: 'Public',
     vcs: {host: 'GitHub', owner: 'foo', name: 'bar'}
   });
@@ -74,6 +82,8 @@ import {scaffoldUnitTesting, scaffoldChoice} from '@form8ion/javascript-core';
     'foo',
     {bar: 'baz'}
   );
+
+  await installDependencies(['foo', 'bar'], PROD_DEPENDENCY_TYPE);
 })();
 ```
 
@@ -140,6 +150,29 @@ visibility of the project (`Public` or `Private`)
 
 [joi](https://hapi.dev/module/joi/) schema for the choices required for the
 [unit-testing scaffolder](#scaffoldunittesting)
+
+#### `installDependencies`
+
+A function that installs the provided package dependencies.
+
+Takes two unnamed arguments:
+
+##### `dependencies` __list of strings__ (_required_)
+
+The list of package names to be installed.
+
+##### `dependenciesType` __string__ (_required_)
+
+Defines if the provided list of package names should be installed as prod or
+dev dependencies. If "dev" is provided, the list will be installed with the
+`--save-exact` flag.
+
+###### Dependency-types Constants
+
+Constants to define the valid options for [`dependenciesType`](#dependenciestype-string-required)
+
+* `PROD_DEPENDENCY_TYPE`
+* `DEV_DEPENDENCY_TYPE`
 
 #### `questionNames`
 
