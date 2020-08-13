@@ -22,7 +22,7 @@ suite('nyc scaffolder', () => {
     assert.deepEqual(
       await scaffoldNyc({projectRoot, vcs: {owner: vcsOwner, name: vcsName, host: 'GitHub'}, visibility: 'Public'}),
       {
-        devDependencies: ['nyc'],
+        devDependencies: ['nyc', '@istanbuljs/nyc-config-babel', 'babel-plugin-istanbul'],
         vcsIgnore: {files: [], directories: ['/coverage/', '/.nyc_output/']},
         badges: {
           status: {
@@ -39,6 +39,7 @@ suite('nyc scaffolder', () => {
       fsPromises.writeFile,
       `${projectRoot}/.nycrc`,
       JSON.stringify({
+        extends: '@istanbuljs/nyc-config-babel',
         reporter: ['lcov', 'text-summary', 'html'],
         exclude: ['src/**/*-test.js', 'test/', 'thirdparty-wrappers/', 'vendor/']
       })

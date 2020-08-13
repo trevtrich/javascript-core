@@ -4,13 +4,14 @@ export default async function ({projectRoot, vcs, visibility}) {
   await promises.writeFile(
     `${projectRoot}/.nycrc`,
     JSON.stringify({
+      extends: '@istanbuljs/nyc-config-babel',
       reporter: ['lcov', 'text-summary', 'html'],
       exclude: ['src/**/*-test.js', 'test/', 'thirdparty-wrappers/', 'vendor/']
     })
   );
 
   return {
-    devDependencies: ['nyc'],
+    devDependencies: ['nyc', '@istanbuljs/nyc-config-babel', 'babel-plugin-istanbul'],
     vcsIgnore: {files: [], directories: ['/coverage/', '/.nyc_output/']},
     badges: {
       status: {
